@@ -1,0 +1,20 @@
+{
+  "name": "orm-com-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": " ./api/index.js",
+  "scripts": {
+    "start": "nodemon ./api/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20",
+    "patch": "^0.0.1",
+    "sequelize-cli": "^6.5.2"
+  }
+}
