@@ -33,7 +33,7 @@ class PessoaController {
         try {
             await database.Pessoas.update(novasInfos, { where: { id: Number(id) } });
             const pessoaAtualizada = await database.Pessoas.findOne({ where: { id: Number(id) } });
-            return res.status(200).json(pessoaAtualizada)
+            return res.status(200).json(pessoaAtualizada);
         } catch (error) {
             return res.status(500).json(error.message);
         }
@@ -41,10 +41,10 @@ class PessoaController {
     static async deletaPessoa(req, res){
         const {id} = req.params;
         try {
-            await database.Pessoas.destroy({ where: {id: Number(id) } })
-            return res.status(200).json({ mensagem:`id: ${id}, foi deletado com sucesso.` })
+            await database.Pessoas.destroy({ where: {id: Number(id) } });
+            return res.status(200).json({ mensagem:`id: ${id}, foi deletado com sucesso.` });
         } catch (error) {
-            res.status(500).json(error.message)
+            res.status(500).json(error.message);
         }
     }
 
@@ -55,7 +55,7 @@ class PessoaController {
             const umaMatricula = await database.Matriculas.findOne( {
                 where: {
                      id: Number(matriculaId),
-                    estudante_id: Number(estudanteId) 
+                    estudante_id: Number(estudanteId)
                 }
             });
             return res.status(200).json(umaMatricula);
@@ -65,7 +65,7 @@ class PessoaController {
     }
     static async criaMatricula(req, res){
         const {estudanteId} = req.params;
-        const novaMatricula = {...req.body, estudante_id: Number(estudanteId)}
+        const novaMatricula = {...req.body, estudante_id: Number(estudanteId)};
         try {
             const novaMatriculaCriada = await database.Matriculas.create(novaMatricula);
             return res.status(200).json(novaMatriculaCriada);
@@ -83,7 +83,7 @@ class PessoaController {
                     estudante_id: Number(estudanteId)
                 }});
             const MatriculaAtualizada = await database.Matriculas.findOne({ where: { id: Number(matriculaId) } });
-            return res.status(200).json(MatriculaAtualizada)
+            return res.status(200).json(MatriculaAtualizada);
         } catch (error) {
             return res.status(500).json(error.message);
         }
@@ -91,10 +91,10 @@ class PessoaController {
     static async deletaMatricula(req, res){
         const {estudanteId, matriculaId} = req.params;
         try {
-            await database.Matriculas.destroy({ where: {id: Number(matriculaId) } })
-            return res.status(200).json({ mensagem:`id: ${matriculaId}, foi deletado com sucesso.` })
+            await database.Matriculas.destroy({ where: {id: Number(matriculaId) } });
+            return res.status(200).json({ mensagem:`id: ${matriculaId}, foi deletado com sucesso.` });
         } catch (error) {
-            res.status(500).json(error.message)
+            res.status(500).json(error.message);
         }
     }
 }

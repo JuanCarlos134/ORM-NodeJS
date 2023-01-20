@@ -5,7 +5,7 @@ class NivelController {
     static async pegaTodosOsNiveis(req, res) {
       try {
         const todosOsNiveis = await database.Niveis.findAll()
-        return res.status(200).json(todosOsNiveis)
+        return res.status(200).json(todosOsNiveis);
       } catch (error) {
         return res.status(500).json(error.message);
       }
@@ -34,7 +34,7 @@ class NivelController {
       try {
           await database.Niveis.update(novosInfosNiveis, { where: { id: Number(id) } });
           const niveisAtualizada = await database.Niveis.findOne({ where: { id: Number(id) } });
-          return res.status(200).json(niveisAtualizada)
+          return res.status(200).json(niveisAtualizada);
       } catch (error) {
           return res.status(500).json(error.message);
       }
@@ -42,10 +42,10 @@ class NivelController {
   static async apagaNivel(req, res){
       const {id} = req.params;
       try {
-          await database.Niveis.destroy({ where: {id: Number(id) } })
-          return res.status(200).json({ mensagem:`id: ${id}, foi deletado com sucesso.` })
+          await database.Niveis.destroy({ where: {id: Number(id) } });
+          return res.status(200).json({ mensagem:`id: ${id}, foi deletado com sucesso.` });
       } catch (error) {
-          res.status(500).json(error.message)
+          res.status(500).json(error.message);
       }
   }
 }

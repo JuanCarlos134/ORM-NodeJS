@@ -5,7 +5,7 @@ class TurmaController {
     static async pegaTodasAsTurmas(req, res) {
       try {
         const todasAsTurmas = await database.Turmas.findAll()
-        return res.status(200).json(todasAsTurmas)
+        return res.status(200).json(todasAsTurmas);
       } catch (error) {
         return res.status(500).json(error.message);
       }
@@ -35,7 +35,7 @@ class TurmaController {
         try {
             await database.Turmas.update(novasInfosTurma, { where: { id: Number(id) } });
             const turmaAtualizada = await database.Turmas.findOne({ where: { id: Number(id) } });
-            return res.status(200).json(turmaAtualizada)
+            return res.status(200).json(turmaAtualizada);
         } catch (error) {
             return res.status(500).json(error.message);
         }
@@ -43,10 +43,10 @@ class TurmaController {
     static async apagaTurma(req, res){
         const {id} = req.params;
         try {
-            await database.Turmas.destroy({ where: {id: Number(id) } })
-            return res.status(200).json({ mensagem:`id: ${id}, foi deletado com sucesso.` })
+            await database.Turmas.destroy({ where: {id: Number(id) } });
+            return res.status(200).json({ mensagem:`id: ${id}, foi deletado com sucesso.` });
         } catch (error) {
-            res.status(500).json(error.message)
+            res.status(500).json(error.message);
         }
     }
 }
