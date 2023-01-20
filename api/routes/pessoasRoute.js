@@ -1,6 +1,7 @@
 const {Router} = require('express');
 const { deletarPessoa } = require('../controllers/PessoaController');
 const PessoaController = require('../controllers/PessoaController');
+
 const router = Router( );
 
 router.get('/pessoas', PessoaController.pegaTodasAsPessoas)
