@@ -1,4 +1,4 @@
-//controllers/NivelController.js
+const database = require('../models');
 
 class NivelController {
 
@@ -32,7 +32,7 @@ class NivelController {
       const { id } = req.params;
       const novosInfosNiveis = req.body;
       try {
-          await database.Niveiss.update(novosInfosNiveis, { where: { id: Number(id) } });
+          await database.Niveis.update(novosInfosNiveis, { where: { id: Number(id) } });
           const niveisAtualizada = await database.Niveis.findOne({ where: { id: Number(id) } });
           return res.status(200).json(niveisAtualizada)
       } catch (error) {
