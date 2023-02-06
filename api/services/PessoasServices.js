@@ -1,10 +1,39 @@
 const Services = require('./Services')
+const database = require('../models')
 
 class PessoasServices extends Services {
-    constructor(){
-        super('Pessoas')
+  constructor() {
+    super('Pessoas')
+    this.matriculas = new Services('Matriculas')
   }
-  //métodos expecíficos do controlador de Pessoas
+
+  async pegaRegistrosAtivos(where = {}) {
+    return database[this.nomeDoModelo].findAll({ where: { ...where } })
+  }
+
+  async pegaTodosOsRegistros(where = {}) {
+    return database[this.nomeDoModelo]
+      .scope('todos')
+      .findAll({ where: { ...where } })
+  }
+
+  async pegaUmRegistro(where = {}) {
+    return database[this.nomeDoModelo]
+      .findOne({ where: { ...where } })
+  }
+
+  async deletaPessoa(where = {}) {
+    return database[this.nomeDoModelo]
+    .scope('todos')
+    
+  }
+
+  async cancelaPessoaEMatriculas(estudanteId) {
+    return database.sequelize.transaction(async transacao => {
+      await super.atualizaRegistro({ ativo: false }, estudanteId, { transaction: transacao })
+      await this.matriculas.atualizaRegistros({ status: 'cancelado' }, { estudante_id: estudanteId }, { transaction: transacao })
+    })
+  }
 }
 
 module.exports = PessoasServices;
