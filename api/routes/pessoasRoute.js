@@ -9,7 +9,7 @@ router
     .get('/pessoas/ativas', PessoaController.pegaPessoasAtivas)
     .get('/pessoas/:id', PessoaController.pegaPessoa)
     .get('/pessoas/:estudanteId/matricula/:matriculaId', MatriculaController.pegaUmaMatricula)
-    .get('/pessoas/:estudanteId/matricula', MatriculaController.pegaMatriculas)
+    .get('/pessoas/:estudanteId/matricula', PessoaController.pegaMatriculas)
     .get('/pessoas/matricula/:turmaId/confirmadas', MatriculaController.pegaMatriculasPorTurma)
     .get('/pessoas/matricula/lotada', MatriculaController.pegaTurmasLotadas)
     .post('/pessoas', PessoaController.criaPessoa)
@@ -21,6 +21,4 @@ router
     .put('/pessoas/:estudanteId/matricula/:matriculaId', MatriculaController.atualizaMatricula)
     .delete('/pessoas/:id', PessoaController.apagaPessoa)
     .delete('/pessoas/:estudanteId/matricula/:matriculaId', MatriculaController.deletaMatricula)
-
-
 module.exports = router;

@@ -38,6 +38,12 @@ class Services {
         return database[this.nomeDoModelo]
             .restore({ where: { id: id } })
     }
+
+    async encontraEContaRegistros(where = {}, agregadores) {
+        return database[this.nomeDoModelo]
+            .findAndCountAll({ where: { ...where }, ...agregadores })
+    }
+
 }
 
 module.exports = Services;
